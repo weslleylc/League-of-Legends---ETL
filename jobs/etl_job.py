@@ -49,6 +49,21 @@ def main():
        app_name='lol_etl_job',
        files=['etl_config.json'])
 
+     config = json.loads("""{
+				"input_path":{
+				    "match_data_path":"./tests/test_data/test_match_data.csv",
+				    "itens_data_path":"./tests/test_data/riot_item.csv",
+				    "champions_data_path":"./tests/test_data//riot_champion.csv"
+			      },
+				"output_path":{
+				    "players_data_path":"./tests/test_data/players.parquet",
+				    "champions_data_path":"./tests/test_data/champions.parquet",
+				    "build_first_item_data_path":"./tests/test_data/build_first_item.parquet",
+				    "build_data_path":"./tests/test_data/build.parquet"
+			      }
+			    }
+			    """)
+
     # log that main ETL job is starting
     log.warn('etl_job is up-and-running')
 
