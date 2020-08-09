@@ -65,3 +65,56 @@ spark-submit \
 jobs/etl_job.py
 ```
 
+Outuput
+Table Champions Win Rate
++-------------+-----------+-------------+-------------------+
+|name_champion|won_matches|total_matches|           win_rate|
++-------------+-----------+-------------+-------------------+
+|      Lee Sin|      17527|        35226| 0.4975586214727758|
+|       Ezreal|      14920|        30133|0.49513822055553713|
+| Miss Fortune|      14834|        28829| 0.5145513198515383|
+|       Thresh|      12454|        24663| 0.5049669545472976|
+|       Lucian|      11778|        24157| 0.4875605414579625|
+|         Sett|      11056|        21694| 0.5096340001843828|
+|       Kai'Sa|      10053|        21041|0.47778147426453116|
+|     Aphelios|      10259|        20247| 0.5066923494838742|
+|        Senna|      10365|        20217| 0.5126873423356582|
+|        Sylas|       9508|        19842|0.47918556597117223|
+|         Ekko|       9846|        19618| 0.5018860230400652|
+|        Elise|       9553|        18065| 0.5288126210905065|
+|     Nautilus|       8191|        16555|0.49477499244941103|
+|       Irelia|       7377|        15885| 0.4644003777148253|
+|       Aatrox|       7703|        15657| 0.4919844159162036|
+|      Rek'Sai|       7887|        15126|  0.521420071400238|
+|         Bard|       7686|        14121| 0.5442957297641811|
+|     Renekton|       7059|        14092| 0.5009225092250923|
+|   Blitzcrank|       6650|        13302|0.49992482333483684|
+|         Pyke|       6482|        13241| 0.4895400649497772|
++-------------+-----------+-------------+-------------------+
+Table Champions Build
++------------+--------------------+-------------+
+|championName|          first_item|total_matches|
++------------+--------------------+-------------+
+|      Aatrox|      Doran's Shield|         2110|
+|        Ahri|     Hextech GLP-800|          801|
+|       Akali|    Hextech Gunblade|         2490|
+|     Alistar|Bulwark of the Mo...|          643|
+|       Amumu|Enchantment: Runi...|           36|
+|      Anivia|    Seraph's Embrace|          113|
+|       Annie|        Doran's Ring|          117|
+|    Aphelios|       Doran's Blade|         4572|
+|        Ashe|Blade of the Ruin...|         1594|
+|Aurelion Sol|   Corrupting Potion|          408|
+|        Azir|      Nashor's Tooth|          324|
+|        Bard|   Shard of True Ice|         2007|
+|  Blitzcrank|Pauldrons of Whit...|         1647|
+|       Brand|        Luden's Echo|           61|
+|       Braum|Pauldrons of Whit...|         1021|
+|     Caitlyn|       Doran's Blade|         1362|
+|     Camille|      Ravenous Hydra|         1210|
+|  Cassiopeia|    Seraph's Embrace|         2017|
+|    Cho'Gath|     Hextech GLP-800|          447|
+|       Corki|       Trinity Force|          125|
++------------+--------------------+-------------+
+
+
