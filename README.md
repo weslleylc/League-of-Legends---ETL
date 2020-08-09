@@ -68,7 +68,7 @@ jobs/etl_job.py
 EMR Cluster:
 ```bash
 spark-submit \
---master yarm \
+--master yarn \
 --py-files packages.zip \
 --files configs/etl_config.json \
 jobs/etl_job.py
