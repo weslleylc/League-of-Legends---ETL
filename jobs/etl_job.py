@@ -49,7 +49,7 @@ def main():
        app_name='lol_etl_job',
        files=['etl_config.json'])
 
-     config = json.loads("""{
+    config = json.loads("""{
 				"input_path":{
 				    "match_data_path":"./tests/test_data/test_match_data.csv",
 				    "itens_data_path":"./tests/test_data/riot_item.csv",
