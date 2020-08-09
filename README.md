@@ -2,6 +2,13 @@
 
 The objective of this repository is to prototype an ETL process to extract useful information from different tables stored in CSV, and then save the files in Parquet format. Our datasets are based on the famous game League of Legends and contain statistics from ranked games in 2020. At the end of this process, we will have tables containing information about the best player and the best builds for each champion. Programs like Blitz perform similar queries to help players to improve their performance.
 
+## Requiriments
+```
+python 3.6
+spark 2.7.3
+```
+
+
 ## Data Sources
 ```
 match_data_version1.csv
