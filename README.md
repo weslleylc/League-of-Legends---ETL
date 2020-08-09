@@ -51,7 +51,7 @@ Change "bucket" for you s3 buckt:
 
 ## Running the tests
 ```
-spark-submit --master local[*]  --py-files packages.zip tests/test_etl_job.py
+spark-submit --master local[*] --py-files packages.zip tests/test_etl_job.py
 ```
 
 ## Running the ETL job
