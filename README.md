@@ -32,19 +32,19 @@ root/
 ```
 
 ## Passing Configuration Parameters to the ETL Job
-Change "bucket" for you s3 buckt:
+Change "YOUR_PATH" for you current user path:
 ```
 {
   "input_path":{
-    "match_data_path":"s3://bucket/test_match_data.csv",
-    "itens_data_path":"s3://bucket/riot_item.csv",
-    "champions_data_path":"s3://bucket/riot_champion.csv"
+    "match_data_path":"YOUR_PATH/test_match_data.csv",
+    "itens_data_path":"YOUR_PATH/riot_item.csv",
+    "champions_data_path":"YOUR_PATH/riot_champion.csv"
   },
   "output_path":{
-    "players_data_path":"s3://bucket//players.parquet",
-    "champions_data_path":"s3://bucket//champions.parquet",
-    "build_first_item_data_path":"s3://bucket/build_first_item.parquet",
-    "build_data_path":"s3://bucket/build.parquet"
+    "players_data_path":"YOUR_PATH/players.parquet",
+    "champions_data_path":"YOUR_PATH/champions.parquet",
+    "build_first_item_data_path":"YOUR_PATH/build_first_item.parquet",
+    "build_data_path":"YOUR_PATH/build.parquet"
   }
 }
 ```
