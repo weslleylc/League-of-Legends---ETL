@@ -47,21 +47,9 @@ def main():
     # start Spark application and get Spark session, logger and config
     spark, log, config = start_spark(
        app_name='lol_etl_job',
-       files=['etl_config.json'])
+       files=['configs/etl_config.json'])
 
-    config = {
-                "input_path":{
-			"match_data_path":"s3://dsp-ch6-weslley/csv/test_match_data.csv",
-			"itens_data_path":"s3://dsp-ch6-weslley/csv/riot_item.csv",
-			"champions_data_path":"s3://dsp-ch6-weslley/csv/riot_champion.csv"
-	      },
-	         "output_path":{
-			"players_data_path":"s3://dsp-ch6-weslley/parquet/players.parquet",
-			"champions_data_path":"s3://dsp-ch6-weslley/parquet/champions.parquet",
-			"build_first_item_data_path":"s3://dsp-ch6-weslley/parquet/build_first_item.parquet",
-			"build_data_path":"s3://dsp-ch6-weslley/parquet//build.parquet"
-	     }
-	   }
+
 
 
     # log that main ETL job is starting
