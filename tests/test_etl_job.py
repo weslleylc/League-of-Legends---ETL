@@ -13,7 +13,7 @@ import json
 from pyspark.sql.functions import mean
 
 from dependencies.spark import start_spark
-from jobs.etl_job import transform_data
+from jobs.etl_job import transform_data, extract_data
 
 
 class SparkETLTests(unittest.TestCase):
@@ -23,7 +23,21 @@ class SparkETLTests(unittest.TestCase):
     def setUp(self):
         """Start Spark, define config and path to test data
         """
-        self.config = json.loads("""{"steps_per_floor": 21}""")
+
+        self.config = json.loads("""{
+                                        "input_path":{
+                                            "match_data_path":"./tests/test_data/test_match_data.csv",
+                                            "itens_data_path":"./tests/test_data/riot_item.csv",
+                                            "champions_data_path":"./tests/test_data//riot_champion.csv"
+                                      },
+                                        "output_path":{
+                                            "players_data_path":"./tests/test_data/players.parquet",
+                                            "champions_data_path":"./tests/test_data/champions.parquet",
+                                            "build_first_item_data_path":"./tests/test_data/build_first_item.parquet",
+                                            "build_data_path":"./tests/test_data/build.parquet"
+                                      }
+                                    }
+                                    """)
         self.spark, *_ = start_spark()
         self.test_data_path = 'tests/test_data/'
 
@@ -39,42 +53,39 @@ class SparkETLTests(unittest.TestCase):
         test the transformation step to make sure it's working as
         expected.
         """
+
+
         # assemble
-        input_data = (
-            self.spark
-            .read
-            .parquet(self.test_data_path + 'employees'))
 
-        expected_data = (
-            self.spark
-            .read
-            .parquet(self.test_data_path + 'employees_report'))
+        # read match data
+        match_data, itens, champions = extract_data(self.spark, self.config['input_path'])
 
-        expected_cols = len(expected_data.columns)
-        expected_rows = expected_data.count()
-        expected_avg_steps = (
-            expected_data
-            .agg(mean('steps_to_desk').alias('avg_steps_to_desk'))
-            .collect()[0]
-            ['avg_steps_to_desk'])
 
-        # act
-        data_transformed = transform_data(input_data, 21)
 
-        cols = len(expected_data.columns)
-        rows = expected_data.count()
-        avg_steps = (
-            expected_data
-            .agg(mean('steps_to_desk').alias('avg_steps_to_desk'))
-            .collect()[0]
-            ['avg_steps_to_desk'])
+        # read expected output data
+        expected_players = self.spark.read.parquet(self.config["output_path"]["players_data_path"])
+        expected_champions = self.spark.read.parquet(self.config["output_path"]["champions_data_path"])
+        expected_build_first_item = self.spark.read.parquet(self.config["output_path"]["build_first_item_data_path"])
+        expected_build = self.spark.read.parquet(self.config["output_path"]["build_data_path"])
 
-        # assert
-        self.assertEqual(expected_cols, cols)
-        self.assertEqual(expected_rows, rows)
-        self.assertEqual(expected_avg_steps, avg_steps)
-        self.assertTrue([col in expected_data.columns
-                         for col in data_transformed.columns])
+
+
+        players, champions, build_first_item, build = transform_data(self.spark, match_data, itens, champions)
+
+
+        for expected_data, data_transformed in zip([expected_players, expected_champions, expected_build_first_item, expected_build],[players, champions, build_first_item, build]):
+            expected_cols = len(expected_data.columns)
+            expected_rows = expected_data.count()
+
+            cols = len(expected_data.columns)
+            rows = expected_data.count()
+
+
+            # assert
+            self.assertEqual(expected_cols, cols)
+            self.assertEqual(expected_rows, rows)
+            self.assertTrue([col in expected_data.columns
+                             for col in data_transformed.columns])
 
 
 if __name__ == '__main__':

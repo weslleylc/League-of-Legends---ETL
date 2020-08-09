@@ -1,3 +1,13 @@
 {
-  "steps_per_floor": 21
+  "input_path":{
+  		"match_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL/data/test_match_data.csv",
+  		"itens_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL//data/riot_item.csv",
+  		"champions_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL//data/riot_champion.csv"
+  },
+  "output_path":{
+  		"players_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL/data/players.parquet",
+  		"champions_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL/data/champions.parquet",
+  		"build_first_item_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL/data/build_first_item.parquet",
+  		"build_data_path":"/home/weslley/Documents/Projects/lol/League-of-Legends---ETL/data/build.parquet"
+  }
 }
