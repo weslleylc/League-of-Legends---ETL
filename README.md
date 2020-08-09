@@ -33,19 +33,26 @@ root/
 
 ## Passing Configuration Parameters to the ETL Job
 Change "bucket" for you s3 buckt:
+```
 {
   "input_path":{
-  		"match_data_path":"s3://bucket/test_match_data.csv",
-  		"itens_data_path":"s3://bucket/riot_item.csv",
-  		"champions_data_path":"s3://bucket/riot_champion.csv"
+    "match_data_path":"s3://bucket/test_match_data.csv",
+    "itens_data_path":"s3://bucket/riot_item.csv",
+    "champions_data_path":"s3://bucket/riot_champion.csv"
   },
   "output_path":{
-  		"players_data_path":"s3://bucket//players.parquet",
-  		"champions_data_path":"s3://bucket//champions.parquet",
-  		"build_first_item_data_path":"s3://bucket/build_first_item.parquet",
-  		"build_data_path":"s3://bucket/build.parquet"
+    "players_data_path":"s3://bucket//players.parquet",
+    "champions_data_path":"s3://bucket//champions.parquet",
+    "build_first_item_data_path":"s3://bucket/build_first_item.parquet",
+    "build_data_path":"s3://bucket/build.parquet"
   }
 }
+```
+
+## Running the tests
+```
+spark-submit --master local[*]  --py-files packages.zip tests/test_etl_job.py
+```
 
 ## Running the ETL job
 
