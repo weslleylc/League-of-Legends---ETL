@@ -13,7 +13,7 @@ riot_champion.csv
 ```
 https://www.kaggle.com/tk0802kim/kerneld01a1ec7ad
 
-<b>Obs: riot_item and riot_champion are small datasets and are stored in test/<b>
+<b>Obs: riot_item and riot_champion are small datasets and are stored in tests/test_data/<b>
 
 
 ## ETL Project Structure
